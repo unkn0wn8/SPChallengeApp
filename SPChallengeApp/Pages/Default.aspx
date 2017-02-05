@@ -34,9 +34,9 @@
         <div ng-controller="SPChallengeController">
             <div class="ms-List ms-List--grid">
                 <div class="ms-ListItem ms-ListItem--document" ng-repeat="doc in documents">
-                    <div><img src="{{getPreview(doc)}}" /></div>
-                    <span class="ms-ListItem-primaryText"><img src="{{getDocIcon(doc)}}" /><a href="{{doc.OriginalPath}}">{{doc.Title}}</a></span>
-                    <span class="ms-ListItem-secondaryText"><a href="{{getDelveLink(doc)}}">{{doc.Author}}</a></span>
+                    <div><img class="previewImage" ng-src="{{getDocPreview(doc.ServerRedirectedPreviewURL)}}" /></div>
+                    <span class="ms-ListItem-primaryText"><img src="{{getDocIcon(doc.FileType)}}" /><a href="{{doc.OriginalPath}}">{{doc.Title}}</a></span>
+                    <span class="ms-ListItem-secondaryText"><a href="{{getDelveLink(doc.AuthorOWSUSER)}}">{{doc.Author}}</a></span>
                     <span class="ms-ListItem-tertiaryText">{{getDate(doc.Created)}}</span>
                     <span>
                         <i ng-repeat="i in maxViewsArray() track by $index" ng-class="{'ms-Icon--star':getViews(doc.ViewsLifeTime) > $index,'ms-Icon--starEmpty':getViews(doc.ViewsLifeTime) <= $index}" class="ms-Icon" aria-hidden="true"></i>

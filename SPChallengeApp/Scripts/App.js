@@ -16,21 +16,23 @@
             return date.toLocaleString();
         }
 
-        $scope.getDelveLink = function (doc) {
+        $scope.getDelveLink = function (docAuthorOWSUSER) {
             var delveUrl = hostweburl.replace(".sharepoint.com", "-my.sharepoint.com");
-            return delveUrl + "/person.aspx?user=" + doc.AuthorOWSUSER.split('|')[0].trim();
+            return delveUrl + "/person.aspx?user=" + docAuthorOWSUSER.split('|')[0].trim();
         }
 
-        $scope.getDocIcon = function (doc) {
-            return scriptbase + "images/ic" + doc.FileType + ".png"
+        $scope.getDocIcon = function (docFileType) {
+            return scriptbase + "images/ic" + docFileType + ".png"
         }
 
+        $scope.getDocPreview = function (docPreviewUrl){
+            if (docPreviewUrl === undefined || docPreviewUrl === null)
+                return "../Images/noPreview.png";
+            else
+                return docPreviewUrl;
+        }
         $scope.maxViewsArray = function () {
             return new Array(5);
-        }
-
-        $scope.getPreview = function (doc) {
-            return hostweburl + "/_layouts/15/getpreview.ashx?path=" + doc.OriginalPath;
         }
 
         $scope.getViews = function (currentViews) {
