@@ -9,9 +9,13 @@
 <%-- The markup and script in the following Content element will be placed in the <head> of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderAdditionalPageHead" runat="server">
     <script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../Scripts/angular.min.js"></script>
+    <script type="text/javascript" src="../Scripts/angular-route.min.js"></script>
     <SharePoint:ScriptLink name="sp.js" runat="server" OnDemand="true" LoadAfterUI="true" Localizable="false" />
     <meta name="WebPartPageExpansion" content="full" />
 
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.min.css" />
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.components.min.css" />
     <!-- Add your CSS styles to the following file -->
     <link rel="Stylesheet" type="text/css" href="../Content/App.css" />
 
@@ -26,12 +30,19 @@
 
 <%-- The markup and script in the following Content element will be placed in the <body> of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">
-
-    <div>
-        <p id="message">
-            <!-- The following content will be replaced with the user name when you run the app - see App.js -->
-            initializing...
-        </p>
+    <div ng-app="SPChallengeApp">
+        <div ng-controller="SPChallengeController">
+            <div class="ms-List ms-List--grid">
+                <div class="ms-ListItem ms-ListItem--document" ng-repeat="doc in documents">
+                    <div><img src="{{getPreview(doc)}}" /></div>
+                    <span class="ms-ListItem-primaryText"><img src="{{getDocIcon(doc)}}" /><a href="{{doc.OriginalPath}}">{{doc.Title}}</a></span>
+                    <span class="ms-ListItem-secondaryText"><a href="{{getDelveLink(doc)}}">{{doc.Author}}</a></span>
+                    <span class="ms-ListItem-tertiaryText">{{getDate(doc.Created)}}</span>
+                    <span>
+                        <i ng-repeat="i in maxViewsArray() track by $index" ng-class="{'ms-Icon--star':getViews(doc.ViewsLifeTime) > $index,'ms-Icon--starEmpty':getViews(doc.ViewsLifeTime) <= $index}" class="ms-Icon" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
-
 </asp:Content>
