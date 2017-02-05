@@ -43,16 +43,10 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="OfficeGraphWebPart\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{f0bd943b-2a39-478a-bd6c-75c7a8969110}</SharePointProjectItemId>
-    </None>
     <None Include="packages.config" />
     <None Include="Pages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{0adc96de-12a7-419f-9a7d-ac9b8e8f0e81}</SharePointProjectItemId>
     </None>
-    <Content Include="OfficeGraphWebPart\Elements.xml">
-      <OpcRelationship>feature-elementmanifest</OpcRelationship>
-    </Content>
     <Content Include="Pages\Elements.xml" />
     <Content Include="Pages\Default.aspx" />
   </ItemGroup>
@@ -61,7 +55,6 @@
     <None Include="Scripts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{acddae95-d481-4129-82fe-a0bd153adbc8}</SharePointProjectItemId>
     </None>
-    <Content Include="Pages\OfficeGraphWebPart.aspx" />
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\Elements.xml" />
